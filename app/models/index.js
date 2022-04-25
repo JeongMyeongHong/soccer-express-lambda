@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import UserModel from './user.model.js';
-import TodoModel from './todo.model.js';
-import BoardModel from './board.model.js';
+import UserModel from './User.js';
+import TodoModel from './Todo.js';
+import BoardModel from './Board.js';
 
 mongoose.Promise = global.Promise
 

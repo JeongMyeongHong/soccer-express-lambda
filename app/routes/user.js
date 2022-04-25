@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import UserService from '../services/userService.js'
 dotenv.config();
+
 const corsOptions = {
     origin: process.env.ORIGIN,
     optionsSuccessStatus: 200

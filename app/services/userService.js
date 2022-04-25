@@ -1,12 +1,10 @@
 import db from '../models/index.js'
-import Repository from '../config/dbConfig.js'
-import dotenv from 'dotenv';
+import getDatabase from '../lambdas/getDatabase.js'
 
 export default function UserService() {
     const User = db.user;
-    const dbo = new Repository();
+    const dbo = getDatabase()
     const dbConnect = dbo.getDb();
-    dotenv.config();
     return {
         join(req, res) {
             console.log(' ### 진행 4: 노드서버에 진입함 ' + JSON.stringify(req.body))
@@ -33,7 +31,7 @@ export default function UserService() {
                         if (!isMatch) {
                             res
                                 .status(401)
-                                .send({message:'FAIL'});
+                                .send({message: 'FAIL'});
                         } else {
                             user.generateToken((err, user) => {
                                 if (err) 
@@ -49,33 +47,8 @@ export default function UserService() {
                         }
                     })
                 }
-            })},
-        list(_req, res) {
-            User
-                .find()
-                .exec((err, users) => {
-                    if (err) 
-                        return res
-                            .status(400)
-                            .send(err)
-                    res
-                        .status(200)
-                        .json({success: true, users})
-                })
-        },
-        profile(req, res) {
-            console.log(`### user profile access ### `)
-            User
-                .find({userid: req.params.id})
-                .exec((err, user) => {
-                    if (err) 
-                        return res
-                            .status(400)
-                            .send(err)
-                    res
-                        .status(200)
-                        .json({success: true, user})
-                })
+            })
         }
+
     }
 }
