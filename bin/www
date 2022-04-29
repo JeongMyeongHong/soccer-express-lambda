@@ -9,9 +9,6 @@ var debug = require('debug')('soccer-express:server');
 var http = require('http');
 
 /**
- * 
- * 
-
  * Get port from environment and store in Express.
  */
 
@@ -91,3 +88,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
