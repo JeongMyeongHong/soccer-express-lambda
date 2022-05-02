@@ -48,6 +48,7 @@ export default function UserService() {
                 }) */
         },
         login(req, res) {
+            console.log(`login info : ${JSON.stringify(req.body)}`)
             User.findOne({
                 userid: req.body.userid
             }, function (err, user) {
