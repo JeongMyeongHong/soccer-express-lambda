@@ -29,7 +29,7 @@ app.post('/login', cors(corsOptions), (req, res) => {
 })
 app.get(
     '/logout',
-    passport.authenticate('jwt', {session: false}),
+    // passport.authenticate('jwt', {session: false}),
     function (req, res) {
         UserService().logout(req, res)
         req.logout();
